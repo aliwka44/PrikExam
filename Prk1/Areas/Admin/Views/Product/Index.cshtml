@@ -1,0 +1,55 @@
+﻿
+@model List<Product>
+
+<div class="row">
+    <div class="col-lg-12 d-flex align-items-stretch">
+        <div class="card w-100">
+            <div class="card-body p-4">
+                <h5 class="card-title fw-semibold mb-4">Recent Transactions</h5>
+                <div class="table-responsive">
+                    <a asp-action="create" class="btn btn-success m-1">Create</a>
+                    <table class="table text-nowrap mb-0 align-middle">
+                        <thead class="text-dark fs-4">
+                            <tr>
+                                <th class="border-bottom-0">
+                                    <h6 class="fw-semibold mb-0">Id</h6>
+                                </th>
+                                <th class="border-bottom-0">
+                                    <h6 class="fw-semibold mb-0">Image</h6>
+                                </th>
+                                <th class="border-bottom-0">
+                                    <h6 class="fw-semibold mb-0">Name</h6>
+                                </th>
+                                <th class="border-bottom-0">
+                                    <h6 class="fw-semibold mb-0">Category</h6>
+                                </th>
+                                <th class="border-bottom-0">
+                                    <h6 class="fw-semibold mb-0">Settings</h6>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Product product in Model)
+                            {
+                                <tr>
+                                    <td class="border-bottom-0"><h6 class="fw-semibold mb-0">@product.Id</h6></td>
+                                    <td class="border-bottom-0"><img  style="width:150px; height:150px;" src="~/admin/images/products/@product.Image"/> 
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        <p class="mb-0 fw-normal">@product.Name</p>
+                                    </td>
+                                    <td class="border-bottom-0 ">
+                                        <h6 class="fw-semibold mb-0 fs-4">@product.Category.Name</h6>
+                                    </td>
+                                   
+                                    <td class="border-bottom-0 d-flex">
+                                        <a asp-action="Update" asp-route-id="@product.Id" class="btn btn-primary m-1">Update</a>
+                                        <a asp-action="Delete" asp-route-id="@product.Id" class="btn btn-danger m-1">Delete</a>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
